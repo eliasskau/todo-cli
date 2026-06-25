@@ -3,7 +3,7 @@ import sqlite3
 
 con = sqlite3.connect("data/todo.db")
 cur = con.cursor()
-cur.execute("CREATE TABLE todo(item)")
+cur.execute("CREATE TABLE IF NOT EXISTS todo(item)")
 
 @click.group()
 def main():
