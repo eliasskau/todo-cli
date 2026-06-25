@@ -5,3 +5,10 @@ requires-python = ">=3.14"
 dependencies = [
     "click>=8.4.2",
 ]
+
+
+[tool.uv]
+package = true
+
+[project.scripts]
+todo = "todo-cli.todo:main"
