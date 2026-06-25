@@ -1,7 +1,7 @@
 import click
 import sqlite3
 
-con = sqlite3.connect("../../data/todo.db")
+con = sqlite3.connect("data/todo.db")
 cur = con.cursor()
 cur.execute("CREATE TABLE todo(item)")
 
