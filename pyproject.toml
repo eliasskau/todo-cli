@@ -1,5 +1,5 @@
 [project]
-name = "pythonproject1"
+name = "todo-cli"
 version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
@@ -10,4 +10,4 @@ dependencies = [
 package = true
 
 [project.scripts]
-todo = "todo-cli.todo:main"
+todo = "todo_cli.todo:main"
