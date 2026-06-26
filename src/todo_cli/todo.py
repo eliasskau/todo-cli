@@ -3,7 +3,7 @@ import sqlite3
 
 con = sqlite3.connect("data/todo.db")
 cur = con.cursor()
-cur.execute("CREATE TABLE IF NOT EXISTS todo(item)")
+cur.execute("CREATE TABLE IF NOT EXISTS todo(id INTEGER PRIMARY KEY,item)")
 
 @click.group()
 def main():
@@ -11,10 +11,18 @@ def main():
     pass
 
 @main.command()
-@click.option('--item',prompt='Add an item to your todo list',help='Add items to a todo SQLite database')
+@click.argument('item', type=str)
 def add(item):
-    cur.execute("""INSERT INTO todo VALUES (?),item""")
+    cur.execute("INSERT INTO todo (item) VALUES (?)",(item,))
     con.commit()
+    con.close()
+
+@main.command()
+@click.argument('id', type=int)
+def delete(id):
+    cur.execute("DELETE FROM todo WHERE id=?", (id,))
+    con.commit()
+    con.close()
 
 @main.command()
 def list():
